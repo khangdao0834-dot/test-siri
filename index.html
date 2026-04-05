@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test-siri | Hash Visualizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">test-siri</p>
+          <h1>Hash Algorithm Visualizer</h1>
+          <p class="hero-copy">
+            Explore how text becomes a deterministic fingerprint through chunking, mixing,
+            and final compression. This demo uses an educational toy hash to make each
+            transformation visible.
+          </p>
+        </div>
+        <div class="hero-badge">
+          <span>Live output</span>
+          <strong id="hashPreview">0x00000000</strong>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel controls">
+          <label for="inputText">Input</label>
+          <textarea id="inputText" rows="6" placeholder="Type text to hash...">OpenFang test-siri</textarea>
+
+          <div class="control-row">
+            <label class="slider-wrap">
+              <span>Chunk size</span>
+              <input id="chunkSize" type="range" min="2" max="8" step="1" value="4" />
+              <strong id="chunkSizeValue">4</strong>
+            </label>
+            <button id="randomizeBtn" type="button">Random sample</button>
+          </div>
+
+          <div class="legend">
+            <div><span class="dot input"></span> Input chars</div>
+            <div><span class="dot chunk"></span> Chunks</div>
+            <div><span class="dot mix"></span> Mixed state</div>
+            <div><span class="dot digest"></span> Digest</div>
+          </div>
+        </section>
+
+        <section class="panel output">
+          <div class="digest-card">
+            <p>Final digest</p>
+            <h2 id="finalHash">0x00000000</h2>
+            <small>Educational rolling hash, built for clarity not cryptographic security.</small>
+          </div>
+          <div class="meter-wrap">
+            <div class="meter-labels">
+              <span>Entropy feel</span>
+              <span id="entropyValue">0%</span>
+            </div>
+            <div class="meter"><div id="entropyBar"></div></div>
+          </div>
+        </section>
+
+        <section class="panel stages">
+          <h3>Pipeline</h3>
+          <div id="stages" class="stage-grid"></div>
+        </section>
+
+        <section class="panel timeline">
+          <h3>Chunk timeline</h3>
+          <div id="timeline" class="timeline-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
